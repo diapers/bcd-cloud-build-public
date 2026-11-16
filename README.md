@@ -15,6 +15,16 @@ Nothing from BCD is stored here. Each run downloads the release's
   UIKit (`UIDocumentPickerViewController`, folders, in place) instead of
   SwiftUI's `.fileImporter`, which on some devices never appears (the log shows
   `[ext-storage] picker opened` and nothing after it).
+- `patches/dxc-in-tree-generated-headers.patch`: `tools/build-dxcompiler.sh`
+  builds DXC with `HLSL_DISABLE_SOURCE_GENERATION=ON`. The runner's
+  Homebrew clang-format formats DXC's regenerated headers differently from
+  the copies in DXC's tree, so the build stopped at "Verifying clang-format
+  results"; the in-tree copies are what the build compiles either way.
+
+KosmicKrisp (Mesa's Vulkan on Metal 4) does not build on the runner (its
+Homebrew LLVM is newer than BCD's pinned translator supports); BCD's workflow
+then ships without it, which only matters for a game set to
+`vulkan = kosmickrisp`.
 
 ## Build
 
