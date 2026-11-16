@@ -21,6 +21,9 @@ Nothing from BCD is stored here. Each run downloads the release's
   the copies in DXC's tree, so the build stopped at "Verifying clang-format
   results"; the in-tree copies are what the build compiles either way.
 
+BCD's "Check ..." steps (about 580 tests of its source, about 40% of the build's
+time) are left out; the three that also patch Wine stay.
+
 KosmicKrisp (Mesa's Vulkan on Metal 4) does not build on the runner (its
 Homebrew LLVM is newer than BCD's pinned translator supports); BCD's workflow
 then ships without it, which only matters for a game set to
